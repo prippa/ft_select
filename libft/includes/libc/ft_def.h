@@ -14,9 +14,9 @@
 # define FT_DEF_H
 
 # define ERR			-1
-# define MALLOC_ERR		"malloc failed"
-# define OPEN_ERR		"open failed"
-# define READ_ERR		"read failed"
+# define MALLOC_ERR		"malloc() failed"
+# define OPEN_ERR		"open() failed"
+# define READ_ERR		"read() failed"
 # define OTHER_ERR		"some system critical error happened"
 
 # define EMPTY_STR		""

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   sl_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 12:20:28 by prippa            #+#    #+#             */
-/*   Updated: 2019/02/11 13:17:23 by prippa           ###   ########.fr       */
+/*   Created: 2019/02/23 13:23:55 by prippa            #+#    #+#             */
+/*   Updated: 2019/02/23 13:23:56 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_select.h"
 
-# define BUFF_SIZE	80
+t_select	g_sl;
 
-# include <stdint.h>
-# include <stdlib.h>
+#define SL_USAGE "Usage: ft_select [arg1 arg2 arg3 ...]"
 
-# define GNL_FAILED	"get_next_line() failed"
 
-typedef	struct		s_gnl
+
+void		sl_init(int argc, char **argv)
 {
-	char			*s;
-	size_t			i;
-	int32_t			fd;
-	struct s_gnl	*next;
-}					t_gnl;
-
-int32_t				get_next_line(const int32_t fd, char **line);
-
-#endif
+	if (argc == 1)
+		ft_fatal_err_exit(SL_USAGE);
+	ft_bzero(&g_sl, sizeof(t_select));
+	sl_init_args(argv + 1);
+}

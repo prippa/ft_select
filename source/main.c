@@ -1,7 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/23 13:08:41 by prippa            #+#    #+#             */
+/*   Updated: 2019/02/23 13:08:42 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_select.h"
 
-int		main(void)
+void	print_list(t_list2 *elem) // debug
 {
-	ft_printf("%~s\n", F_BOLD_CYAN, "Hello");
+	t_argument *arg;
+
+	arg = (t_argument *)elem->content;
+	ft_printf("%~s\n", arg->color, arg->name);
+}
+
+int		main(int argc, char **argv)
+{
+	sl_init(argc, argv);
+	ft_lst2iter(g_sl.args_start, print_list); // debug
+	system("leaks -q ft_select"); // debug
 	return (EXIT_SUCCESS);
 }

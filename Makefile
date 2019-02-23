@@ -1,6 +1,7 @@
 #-------------------------- Key Values -----------------------------------------
 NAME		:=	ft_select
 CFLAGS		:=	-Wall -Werror -Wextra
+LFLAGS		:=	-ltermcap -o
 CC			:=	gcc
 
 DIR_LIB		:=	libft/
@@ -11,13 +12,17 @@ CH_HEAD		:=	h
 CH_SRC		:=	c
 CH_OBJ		:=	o
 
+DIR_INIT	:=	$(DIR_SRC)init/
+
 LIBFT		:=	$(DIR_LIB)libft.a
 
 #-------------------------- Header files ---------------------------------------
 COR_H		:=	$(DIR_INC)ft_select.h
 
 #-------------------------- Source files ---------------------------------------
-COR_C		:=	$(DIR_SRC)main.c
+COR_C		:=	$(DIR_SRC)main.c\
+				$(DIR_INIT)sl_init.c\
+				$(DIR_INIT)sl_init_args.c
 
 
 #-------------------------- Init OBJ INC ---------------------------------------
@@ -37,7 +42,7 @@ $(DIR_OBJ):
 
 #-------------------------- Link Block -----------------------------------------
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) 
+	@$(CC) $(LFLAGS) $(NAME) $(OBJ) $(LIBFT) 
 	@echo "Linking" [ $(NAME) ]
 
 #-------------------------- Compil Block ---------------------------------------
