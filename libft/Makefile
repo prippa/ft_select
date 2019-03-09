@@ -88,6 +88,7 @@ LIB_C		:=	$(DIR_MEM)ft_bzero.c\
 				$(DIR_STR)ft_strsplit.c\
 				$(DIR_STR)ft_strstr.c\
 				$(DIR_STR)ft_strsub.c\
+				$(DIR_STR)ft_strsub_free.c\
 				$(DIR_STR)ft_strtrim.c\
 				$(DIR_IS)ft_isalnum.c\
 				$(DIR_IS)ft_isalpha.c\
@@ -127,6 +128,7 @@ LIB_C		:=	$(DIR_MEM)ft_bzero.c\
 				$(DIR_LST)ft_lstnew.c\
 				$(DIR_LST)ft_lstpop.c\
 				$(DIR_LST)ft_lstrev.c\
+				$(DIR_LST)ft_lstsize.c\
 				$(DIR_ARR)ft_arrdel.c\
 				$(DIR_ARR)ft_arrlen.c\
 				$(DIR_ARR)ft_arrnew.c\
