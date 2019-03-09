@@ -42,7 +42,7 @@ $(DIR_OBJ):
 
 #-------------------------- Link Block -----------------------------------------
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(LFLAGS) $(NAME) $(OBJ) $(LIBFT) 
+	@$(CC) $(LFLAGS) $(NAME) $(OBJ) $(LIBFT)
 	@echo "Linking" [ $(NAME) ]
 
 #-------------------------- Compil Block ---------------------------------------

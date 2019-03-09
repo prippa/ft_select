@@ -26,7 +26,6 @@ static int32_t	sl_get_color(const char *file)
 	if (sb.st_mode & S_IXUSR)
 		return (F_RED);
 	return (F_WHITE);
-
 }
 
 void			sl_init_args(char **argv)
