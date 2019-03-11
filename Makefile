@@ -21,6 +21,7 @@ COR_H		:=	$(DIR_INC)ft_select.h
 
 #-------------------------- Source files ---------------------------------------
 COR_C		:=	$(DIR_SRC)main.c\
+				$(DIR_SRC)sl_exit.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c
 

@@ -23,7 +23,6 @@ void	print_list(t_list2 *elem) // debug
 int		main(int argc, char **argv)
 {
 	sl_init(argc, argv);
-	ft_lst2iter(g_sl.args_start, print_list); // debug
-	system("leaks -q ft_select"); // debug
+	ft_lst2iter(sl()->args_start, print_list); // debug
 	return (EXIT_SUCCESS);
 }

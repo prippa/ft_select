@@ -13,14 +13,14 @@
 #include "ft_select.h"
 #include <sys/stat.h>
 
-#define STAT_FAILED "stat failed"
-
 static int32_t	sl_get_color(const char *file)
 {
 	struct stat	sb;
 
-	if ((stat(file, &sb)) == ERR)
-		ft_fatal_err_exit(STAT_FAILED);
+	if ((lstat(file, &sb)) == ERR)
+		ft_perror_exit("lstat");
+	if (S_ISLNK(sb.st_mode))
+		return (F_MAGENTA);
 	if (S_ISDIR(sb.st_mode))
 		return (F_BOLD_CYAN);
 	if (sb.st_mode & S_IXUSR)
@@ -37,11 +37,11 @@ void			sl_init_args(char **argv)
 	{
 		ft_bzero(&arg, sizeof(t_argument));
 		if (!(arg.name = ft_strdup(*argv)))
-			ft_fatal_err_exit(MALLOC_ERR);
+			ft_perror_exit(MALLOC_ERR);
 		arg.color = sl_get_color(*argv);
 		if (!(new_obj = ft_lst2new(&arg, sizeof(t_argument))))
-			ft_fatal_err_exit(MALLOC_ERR);
-		ft_lst2_push_back(&g_sl.args_start, &g_sl.args_end, new_obj);
+			ft_perror_exit(MALLOC_ERR);
+		ft_lst2_push_back(&sl()->args_start, &sl()->args_end, new_obj);
 		++argv;
 	}
 }
