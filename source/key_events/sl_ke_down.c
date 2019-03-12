@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_init.c                                          :+:      :+:    :+:   */
+/*   sl_ke_down.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 13:23:55 by prippa            #+#    #+#             */
-/*   Updated: 2019/02/23 13:23:56 by prippa           ###   ########.fr       */
+/*   Created: 2019/03/12 18:02:44 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/12 18:02:45 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include "messages.h"
 
-t_select	*sl(void)
+void		sl_ke_down(void)
 {
-	static t_select sl;
+	t_list2	*chosen_one;
 
-	return (&sl);
-}
-
-void		sl_init(int argc, char **argv)
-{
-	if (argc == 1)
-		sl_init_fatal_err_exit(SL_USAGE);
-	ft_bzero(sl(), sizeof(t_select));
-	sl_init_term();
-	sl_init_args(argv + 1);
+	chosen_one = sl_ke_get_chosen_one(sl()->args_start);
+	((t_argument *)chosen_one->content)->chosen_one = false;
+	if (chosen_one->next)
+		((t_argument *)chosen_one->prev->content)->chosen_one = true;
+	else
+		((t_argument *)sl()->args_start->content)->chosen_one = true;
 }

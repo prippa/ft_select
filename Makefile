@@ -13,17 +13,27 @@ CH_SRC		:=	c
 CH_OBJ		:=	o
 
 DIR_INIT	:=	$(DIR_SRC)init/
+DIR_KE		:=	$(DIR_SRC)key_events/
 
 LIBFT		:=	$(DIR_LIB)libft.a
 
 #-------------------------- Header files ---------------------------------------
-COR_H		:=	$(DIR_INC)ft_select.h
+COR_H		:=	$(DIR_INC)ft_select.h\
+				$(DIR_INC)messages.h\
+				$(DIR_INC)keys.h
 
 #-------------------------- Source files ---------------------------------------
 COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_SRC)sl_exit.c\
+				$(DIR_SRC)sl_utility.c\
 				$(DIR_INIT)sl_init.c\
-				$(DIR_INIT)sl_init_args.c
+				$(DIR_INIT)sl_init_args.c\
+				$(DIR_INIT)sl_init_term.c\
+				$(DIR_KE)sl_key_events.c\
+				$(DIR_KE)sl_ke_up.c\
+				$(DIR_KE)sl_ke_down.c\
+				$(DIR_KE)sl_ke_left.c\
+				$(DIR_KE)sl_ke_right.c
 
 
 #-------------------------- Init OBJ INC ---------------------------------------

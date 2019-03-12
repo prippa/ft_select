@@ -17,14 +17,15 @@ static int32_t	sl_get_color(const char *file)
 {
 	struct stat	sb;
 
-	if ((lstat(file, &sb)) == ERR)
-		ft_perror_exit("lstat");
-	if (S_ISLNK(sb.st_mode))
-		return (F_MAGENTA);
-	if (S_ISDIR(sb.st_mode))
-		return (F_BOLD_CYAN);
-	if (sb.st_mode & S_IXUSR)
-		return (F_RED);
+	if (lstat(file, &sb) == OK)
+	{
+		if (S_ISLNK(sb.st_mode))
+			return (F_MAGENTA);
+		if (S_ISDIR(sb.st_mode))
+			return (F_BOLD_CYAN);
+		if (sb.st_mode & S_IXUSR)
+			return (F_RED);
+	}
 	return (F_WHITE);
 }
 
@@ -44,4 +45,5 @@ void			sl_init_args(char **argv)
 		ft_lst2_push_back(&sl()->args_start, &sl()->args_end, new_obj);
 		++argv;
 	}
+	((t_argument *)sl()->args_start->content)->chosen_one = true;
 }

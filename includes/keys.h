@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_init.c                                          :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 13:23:55 by prippa            #+#    #+#             */
-/*   Updated: 2019/02/23 13:23:56 by prippa           ###   ########.fr       */
+/*   Created: 2019/03/12 15:55:41 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/12 15:55:42 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
-#include "messages.h"
+#ifndef KEYS_H
+# define KEYS_H
 
-t_select	*sl(void)
-{
-	static t_select sl;
+# define ESC 27
+# define UP 4283163
+# define DOWN 4348699
+# define RIGHT 4414235
+# define LEFT 4479771
 
-	return (&sl);
-}
+t_list2		*sl_ke_get_chosen_one(t_list2 *args_start);
 
-void		sl_init(int argc, char **argv)
-{
-	if (argc == 1)
-		sl_init_fatal_err_exit(SL_USAGE);
-	ft_bzero(sl(), sizeof(t_select));
-	sl_init_term();
-	sl_init_args(argv + 1);
-}
+void		sl_ke_esc(void);
+void		sl_ke_up(void);
+void		sl_ke_down(void);
+void		sl_ke_right(void);
+void		sl_ke_left(void);
+
+#endif

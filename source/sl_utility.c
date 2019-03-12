@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_init.c                                          :+:      :+:    :+:   */
+/*   sl_utility.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 13:23:55 by prippa            #+#    #+#             */
-/*   Updated: 2019/02/23 13:23:56 by prippa           ###   ########.fr       */
+/*   Created: 2019/03/12 15:48:34 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/12 15:48:36 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include "messages.h"
 
-t_select	*sl(void)
+int32_t		sl_print_key(int32_t n)
 {
-	static t_select sl;
-
-	return (&sl);
+	return (write(STDIN_FILENO, &n, 1));
 }
 
-void		sl_init(int argc, char **argv)
+void		sl_del_arg(void *content, size_t content_size)
 {
-	if (argc == 1)
-		sl_init_fatal_err_exit(SL_USAGE);
-	ft_bzero(sl(), sizeof(t_select));
-	sl_init_term();
-	sl_init_args(argv + 1);
+	t_argument *arg;
+
+	arg = (t_argument *)content;
+	(void)content_size;
+	ft_memdel((void **)&arg->name);
 }

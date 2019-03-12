@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_init.c                                          :+:      :+:    :+:   */
+/*   sl_ke_right.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 13:23:55 by prippa            #+#    #+#             */
-/*   Updated: 2019/02/23 13:23:56 by prippa           ###   ########.fr       */
+/*   Created: 2019/03/12 18:02:58 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/12 18:02:59 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include "messages.h"
 
-t_select	*sl(void)
+void		sl_ke_right(void)
 {
-	static t_select sl;
-
-	return (&sl);
-}
-
-void		sl_init(int argc, char **argv)
-{
-	if (argc == 1)
-		sl_init_fatal_err_exit(SL_USAGE);
-	ft_bzero(sl(), sizeof(t_select));
-	sl_init_term();
-	sl_init_args(argv + 1);
+	
 }
