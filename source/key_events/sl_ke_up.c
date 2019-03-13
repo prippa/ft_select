@@ -15,12 +15,5 @@
 
 void		sl_ke_up(void)
 {
-	t_list2	*co;
-
-	co = sl_ke_get_chosen_one(sl()->args_start);
-	((t_argument *)co->content)->chosen_one = false;
-	if (co->prev)
-		((t_argument *)co->prev->content)->chosen_one = true;
-	else
-		((t_argument *)sl()->args_end->content)->chosen_one = true;
+	
 }

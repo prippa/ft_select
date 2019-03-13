@@ -52,6 +52,7 @@ typedef struct	s_printf
 	int32_t		buflen;
 	char		f[FLAG_SIZE];
 	int32_t		color;
+	int32_t		color_type;
 	int32_t		width;
 	int32_t		precision;
 	int32_t		size_flag;

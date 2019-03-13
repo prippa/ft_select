@@ -13,20 +13,38 @@
 #include "ft_select.h"
 #include <sys/stat.h>
 
-static int32_t	sl_get_color(const char *file)
+static void sl_set_default_color(t_argument *arg)
+{
+	arg->color_type = F_NONE;
+	arg->color = F_NONE;
+}
+
+static void	sl_set_color(const char *file, t_argument *arg)
 {
 	struct stat	sb;
 
 	if (lstat(file, &sb) == OK)
 	{
 		if (S_ISLNK(sb.st_mode))
-			return (F_MAGENTA);
-		if (S_ISDIR(sb.st_mode))
-			return (F_BOLD_CYAN);
-		if (sb.st_mode & S_IXUSR)
-			return (F_RED);
+		{
+			arg->color_type = F_NONE;
+			arg->color = C_MAGENTA;
+		}
+		else if (S_ISDIR(sb.st_mode))
+		{
+			arg->color_type = CT_BOLD;
+			arg->color = C_CYAN;
+		}
+		else if (sb.st_mode & S_IXUSR)
+		{
+			arg->color_type = F_NONE;
+			arg->color = C_RED;
+		}
+		else
+			sl_set_default_color(arg);
 	}
-	return (F_WHITE);
+	else
+		sl_set_default_color(arg);
 }
 
 void			sl_init_args(char **argv)
@@ -39,7 +57,7 @@ void			sl_init_args(char **argv)
 		ft_bzero(&arg, sizeof(t_argument));
 		if (!(arg.name = ft_strdup(*argv)))
 			ft_perror_exit(MALLOC_ERR);
-		arg.color = sl_get_color(*argv);
+		sl_set_color(*argv, &arg);
 		if (!(new_obj = ft_lst2new(&arg, sizeof(t_argument))))
 			ft_perror_exit(MALLOC_ERR);
 		ft_lst2_push_back(&sl()->args_start, &sl()->args_end, new_obj);

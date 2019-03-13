@@ -3,9 +3,7 @@
 
 void		sl_exit(int32_t exit_code)
 {
-	tcsetattr(STDIN_FILENO, TCSANOW, &sl()->base_attr);
-	tputs(tgetstr("ve", NULL), 1, sl_print_key);
-	tputs(tgetstr("te", NULL), 1, sl_print_key);
+	sl_set_base_settings();
 	exit(exit_code);
 }
 

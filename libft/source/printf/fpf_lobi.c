@@ -39,6 +39,7 @@ static void	fpf_handle_type(t_printf *fpf)
 	fpf->width = 0;
 	fpf->precision = 0;
 	fpf->color = 0;
+	fpf->color_type = 0;
 	fpf->type = 0;
 	fpf->str = NULL;
 	ft_bzero(fpf->f, FLAG_SIZE);

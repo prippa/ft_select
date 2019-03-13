@@ -13,17 +13,19 @@
 #include "ft_select.h"
 #include "keys.h"
 
-#define KE_SIZE 5
+#define KE_SIZE 9
 
 static const int64_t	g_keys[KE_SIZE] =
 {
-	ESC, UP, DOWN, RIGHT, LEFT
+	ESC, UP, DOWN, RIGHT, LEFT, RETURN,
+	SPACE, BACK_SPACE, DEL
 };
 
 typedef void			(*t_events)(void);
 static const			t_events g_ke[KE_SIZE] =
 {
-	sl_ke_esc, sl_ke_up, sl_ke_down, sl_ke_right, sl_ke_left
+	sl_ke_esc, sl_ke_up, sl_ke_down, sl_ke_right, sl_ke_left, sl_ke_return,
+	sl_ke_space, sl_ke_back_space, sl_ke_del
 };
 
 void		sl_key_events(int64_t key)
@@ -47,7 +49,7 @@ t_list2		*sl_ke_get_chosen_one(t_list2 *args_start)
 	return (NULL);
 }
 
-void		sl_ke_go_to(int32_t y, int32_t x)
-{
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), x, y), STDIN_FILENO);
-}
+// void		sl_ke_go_to(int32_t y, int32_t x)
+// {
+// 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), x, y), STDIN_FILENO);
+// }

@@ -13,8 +13,8 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 
-# include "../libft/includes/libc/libft.h"
-# include "../libft/includes/printf/ft_printf.h"
+# include "libft.h"
+# include "ft_printf.h"
 # include <termios.h>
 # include <term.h>
 
@@ -22,6 +22,7 @@ typedef struct		s_argument
 {
 	char			*name;
 	int32_t			color;
+	int32_t			color_type;
 	t_bool			selected;
 	t_bool			chosen_one;
 }					t_argument;
@@ -33,6 +34,7 @@ typedef struct		s_select
 	char			*termtype;
 	t_list2			*args_start;
 	t_list2			*args_end;
+	uint16_t		col_size;
 }					t_select;
 
 t_select			*sl(void);
@@ -48,7 +50,9 @@ void				sl_init_fatal_err_exit(const char *message);
 void				sl_key_events(int64_t key);
 
 void				sl_del_arg(void *content, size_t content_size);
-
 int32_t				sl_print_key(int32_t n);
+void				sl_set_base_settings(void);
+
+void				sl_print_all(void);
 
 #endif

@@ -16,6 +16,8 @@ DIR_INIT	:=	$(DIR_SRC)init/
 DIR_KE		:=	$(DIR_SRC)key_events/
 
 LIBFT		:=	$(DIR_LIB)libft.a
+DIR_INC_LIB	:=	$(DIR_LIB)includes/libc $(DIR_LIB)includes/printf\
+				$(DIR_LIB)includes/get_next_line
 
 #-------------------------- Header files ---------------------------------------
 COR_H		:=	$(DIR_INC)ft_select.h\
@@ -26,6 +28,7 @@ COR_H		:=	$(DIR_INC)ft_select.h\
 COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_SRC)sl_exit.c\
 				$(DIR_SRC)sl_utility.c\
+				$(DIR_SRC)sl_print_all.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\
@@ -34,14 +37,18 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_KE)sl_ke_up.c\
 				$(DIR_KE)sl_ke_down.c\
 				$(DIR_KE)sl_ke_left.c\
-				$(DIR_KE)sl_ke_right.c
+				$(DIR_KE)sl_ke_right.c\
+				$(DIR_KE)sl_ke_return.c\
+				$(DIR_KE)sl_ke_space.c\
+				$(DIR_KE)sl_ke_back_space.c\
+				$(DIR_KE)sl_ke_del.c
 
 
 #-------------------------- Init OBJ INC ---------------------------------------
 OBJ			:=	$(patsubst $(DIR_SRC)%,$(DIR_OBJ)%,\
 				$(COR_C:.$(CH_SRC)=.$(CH_OBJ)))
 
-INC			:=	$(addprefix -I, $(DIR_INC))
+INC			:=	$(addprefix -I, $(DIR_INC) $(DIR_INC_LIB))
 
 #-------------------------- Make -----------------------------------------------
 all: lib $(DIR_OBJ) $(NAME)
