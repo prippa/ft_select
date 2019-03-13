@@ -1,7 +1,6 @@
 #-------------------------- Key Values -----------------------------------------
 NAME		:=	ft_select
 CFLAGS		:=	-Wall -Werror -Wextra
-LFLAGS		:=	-ltermcap -o
 CC			:=	gcc
 
 DIR_LIB		:=	libft/
@@ -61,7 +60,7 @@ $(DIR_OBJ):
 
 #-------------------------- Link Block -----------------------------------------
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(LFLAGS) $(NAME) $(OBJ) $(LIBFT)
+	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) -ltermcap
 	@echo "Linking" [ $(NAME) ]
 
 #-------------------------- Compil Block ---------------------------------------

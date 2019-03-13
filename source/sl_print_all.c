@@ -44,7 +44,7 @@ static size_t	sl_get_max_len(t_list2 *start)
 	return (max);
 }
 
-static void		sl_print_list(uint16_t col_size, t_list2 *start, size_t width)
+static void		sl_print_list(uint16_t col_size, size_t width, t_list2 *start)
 {
 	uint16_t	cs_save;
 	t_argument	*arg;
@@ -78,7 +78,7 @@ void			sl_print_all(void)
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
 	width = sl_get_max_len(sl()->args_start) + SEPARATOR_SIZE;
 	sl()->col_size = w.ws_col / width;
-	sl_print_list(sl()->col_size, sl()->args_start, width);
+	sl_print_list(sl()->col_size, width, sl()->args_start);
 	// ft_dprintf(STDIN_FILENO, "col - %zu  row - %zu\n", w.ws_col, w.ws_row);
 	// ft_dprintf(STDIN_FILENO, "col_size - %zu\n", col_size);	
 	// ft_lst2iter(sl()->args_start, print_list); // debug

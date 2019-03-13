@@ -16,6 +16,7 @@ static void	sl_loop(void)
 {
 	int64_t key;
 
+	tputs(tgetstr("cl", NULL), 1, sl_print_key);
 	sl_print_all();
 	while (true)
 	{
