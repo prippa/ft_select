@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include "keys.h"
 
 void		sl_ke_down(void)
 {
-	t_list2	*chosen_one;
+	t_list2	*co;
 
-	chosen_one = sl_ke_get_chosen_one(sl()->args_start);
-	((t_argument *)chosen_one->content)->chosen_one = false;
-	if (chosen_one->next)
-		((t_argument *)chosen_one->prev->content)->chosen_one = true;
+	co = sl_ke_get_chosen_one(sl()->args_start);
+	((t_argument *)co->content)->chosen_one = false;
+	if (co->next)
+		((t_argument *)co->next->content)->chosen_one = true;
 	else
 		((t_argument *)sl()->args_start->content)->chosen_one = true;
 }

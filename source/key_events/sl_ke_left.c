@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include "keys.h"
 
 void		sl_ke_left(void)
 {
-	
+	sl_ke_go_to(2, 0);
+	ft_putstr_fd("      ", 0);
+	sl_ke_go_to(2, 0);
+	ft_putstr_fd("0_0", 0);
 }
-

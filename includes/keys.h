@@ -20,6 +20,7 @@
 # define LEFT 4479771
 
 t_list2		*sl_ke_get_chosen_one(t_list2 *args_start);
+void		sl_ke_go_to(int32_t y, int32_t x);
 
 void		sl_ke_esc(void);
 void		sl_ke_up(void);
