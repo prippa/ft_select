@@ -15,6 +15,7 @@ static void	sl_print_err(const char *message)
 
 void		sl_fatal_err_exit(const char *message)
 {
+	sl_set_base_settings();
 	sl_print_err(message);
 	sl_exit(EXIT_FAILURE);
 }
