@@ -13,14 +13,27 @@
 #include "ft_select.h"
 #include "keys.h"
 
-void		sl_ke_right(void)
+static t_list2	*get_next_n_obj(t_list2 *cur)
 {
-	t_list2	*co;
+	uint16_t n;
 
-	co = sl_ke_get_chosen_one(sl()->args_start);
+	n = -1;
+	while (true)
+	{
+		if (++n == sl()->row_size || !cur->next)
+			return (cur);
+		cur = cur->next;
+	}
+	return (NULL);
+}
+
+void		sl_ke_right(t_list2 *co)
+{
+	t_list2 *new_one;
+
 	((t_argument *)co->content)->chosen_one = false;
-	if (co->next)
-		((t_argument *)co->next->content)->chosen_one = true;
-	else
-		((t_argument *)sl()->args_start->content)->chosen_one = true;
+	sl_print_elem((t_list *)co);
+	new_one = get_next_n_obj(co);
+	((t_argument *)new_one->content)->chosen_one = true;
+	sl_print_elem((t_list *)new_one);
 }

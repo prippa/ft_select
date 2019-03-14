@@ -24,17 +24,18 @@ static void	sl_print_selected_args(t_list2 *start)
 		if (arg->selected)
 		{
 			if (!first_elem_flag)
-				ft_putchar_fd(' ', STDOUT_FILENO);
+				ft_putchar(' ');
 			else
 				first_elem_flag = false;
-			ft_putstr_fd(arg->name, STDOUT_FILENO);
+			ft_putstr(arg->name);
 		}
 		start = start->next;
 	}
 }
 
-void		sl_ke_return(void)
+void		sl_ke_return(t_list2 *co)
 {
+	(void)co;
 	sl_set_base_settings();
 	sl_print_selected_args(sl()->args_start);
 	exit(EXIT_SUCCESS);

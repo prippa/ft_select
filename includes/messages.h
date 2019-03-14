@@ -19,5 +19,6 @@
 # define NO_TERM "Specify a terminal type with 'setenv TERM <yourtype>'."
 # define NO_ACCESS_TO_DB "Could not access the termcap data base."
 # define NO_SUCH_ENTRY "Terminal type `%s' is not defined."
+# define NO_ROOM "Not enough space! Resize window."
 
 #endif

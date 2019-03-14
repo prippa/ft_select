@@ -12,22 +12,11 @@
 
 #include "ft_select.h"
 #include "messages.h"
+#include "keys.h"
+#include <math.h>
 #include <sys/ioctl.h>
 
-#define SEPARATOR_SIZE 2
-
-// void	print_list(t_list2 *elem) // debug
-// {
-// 	t_argument *arg;
-
-// 	arg = (t_argument *)elem->content;
-// 	ft_dprintf(STDIN_FILENO, "%s%s%~s\n",
-// 		(arg->selected ? BACK : EMPTY_STR),
-// 		(arg->chosen_one ? UNDER_LINE : EMPTY_STR),
-// 		arg->color_type,
-// 		arg->color,
-// 		arg->name);
-// }
+#define SEPARATOR_SIZE 1
 
 static size_t	sl_get_max_len(t_list2 *start)
 {
@@ -44,42 +33,69 @@ static size_t	sl_get_max_len(t_list2 *start)
 	return (max);
 }
 
-static void		sl_print_list(uint16_t col_size, size_t width, t_list2 *start)
+static void		sl_set_coords(size_t width, t_list2 *start)
 {
-	uint16_t	cs_save;
-	t_argument	*arg;
+	t_point		p;
 
-	cs_save = col_size;
+	ft_bzero(&p, sizeof(t_point));
 	while (start)
 	{
-		if (!col_size)
+		((t_argument *)start->content)->p = p;
+		if (p.y + 1 < sl()->row_size)
+			++p.y;
+		else
 		{
-			col_size = cs_save;
-			ft_putendl_fd(EMPTY_STR, STDIN_FILENO);
+			p.y = 0;
+			p.x += width;
 		}
-		arg = (t_argument *)start->content;
-		ft_dprintf(STDIN_FILENO, "%s%s%~s",
-			(arg->selected ? BACK : EMPTY_STR),
-			(arg->chosen_one ? UNDER_LINE : EMPTY_STR),
-			arg->color_type,
-			arg->color,
-			arg->name);
-		ft_dprintf(STDIN_FILENO, "%*c", width - ft_strlen(arg->name), ' ');
 		start = start->next;
-		--col_size;
 	}
+}
+
+static t_bool	sl_print_all_logic(void)
+{
+	struct winsize	w;
+	size_t			width;
+	size_t			col_size;
+	size_t			row_size;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+	width = sl_get_max_len(sl()->args_start) + SEPARATOR_SIZE;
+	if ((col_size = w.ws_col / width) == 0)
+		return (false);
+	row_size = (size_t)ceil(
+		(double)ft_lstsize((t_list *)sl()->args_start) / col_size);
+	if (row_size > w.ws_row)
+		return (false);
+	sl()->col_size = (uint16_t)col_size;
+	sl()->row_size = (uint16_t)row_size;
+	sl_set_coords(width, sl()->args_start);
+	return (true);
+}
+
+void			sl_print_elem(t_list *elem)
+{
+	t_argument *arg;
+
+	arg = (t_argument *)elem->content;
+	sl_goto(arg->p.y, arg->p.x);
+	ft_dprintf(STDIN_FILENO, "%s%s%~s\n",
+		(arg->selected ? BACK : EMPTY_STR),
+		(arg->chosen_one ? UNDER_LINE : EMPTY_STR),
+		arg->color_type,
+		arg->color,
+		arg->name);
 }
 
 void			sl_print_all(void)
 {
-	struct winsize	w;
-	size_t			width;
-
-	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
-	width = sl_get_max_len(sl()->args_start) + SEPARATOR_SIZE;
-	sl()->col_size = w.ws_col / width;
-	sl_print_list(sl()->col_size, width, sl()->args_start);
-	// ft_dprintf(STDIN_FILENO, "col - %zu  row - %zu\n", w.ws_col, w.ws_row);
-	// ft_dprintf(STDIN_FILENO, "col_size - %zu\n", col_size);	
-	// ft_lst2iter(sl()->args_start, print_list); // debug
+	if (sl_print_all_logic() == false)
+	{
+		ft_putstr_fd(NO_ROOM, STDIN_FILENO);
+		sl()->ok_size_of_window = false;
+		return ;
+	}
+	tputs(tgetstr("cl", NULL), 1, sl_print_key);
+	ft_lstiter((t_list *)sl()->args_start, sl_print_elem);
+	sl()->ok_size_of_window = true;
 }

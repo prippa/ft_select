@@ -12,7 +12,8 @@
 
 #include "ft_select.h"
 
-void		sl_ke_esc(void)
+void		sl_ke_esc(t_list2 *co)
 {
+	(void)co;
 	sl_exit(EXIT_SUCCESS);
 }

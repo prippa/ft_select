@@ -13,13 +13,12 @@
 #include "ft_select.h"
 #include "keys.h"
 
-void		sl_ke_space(void)
+void		sl_ke_space(t_list2 *co)
 {
-	t_list2		*co;
 	t_argument	*arg;
 
-	co = sl_ke_get_chosen_one(sl()->args_start);
 	arg = (t_argument *)co->content;
 	arg->selected = SWITCH_LOGIC(arg->selected);
-	sl_ke_right();
+	sl_print_elem((t_list *)co);
+	sl_ke_down(co);
 }

@@ -16,17 +16,14 @@ static void	sl_loop(void)
 {
 	int64_t key;
 
-	tputs(tgetstr("cl", NULL), 1, sl_print_key);
 	sl_print_all();
 	while (true)
 	{
 		key = 0;
 		if ((read(STDIN_FILENO, &key, 8)) == ERR)
 			sl_fatal_err_exit(READ_ERR);
-		tputs(tgetstr("cl", NULL), 1, sl_print_key);
-		sl_key_events(key);
-		sl_print_all();
-		// ft_dprintf(0, "[%lld]\n", key); // debug
+		if (sl()->ok_size_of_window)
+			sl_key_events(key);
 	}
 }
 

@@ -13,7 +13,18 @@
 #include "ft_select.h"
 #include "keys.h"
 
-void		sl_ke_down(void)
+void		sl_ke_down(t_list2 *co)
 {
-	
+	((t_argument *)co->content)->chosen_one = false;
+	sl_print_elem((t_list *)co);
+	if (co->next)
+	{
+		((t_argument *)co->next->content)->chosen_one = true;
+		sl_print_elem((t_list *)co->next);
+	}
+	else
+	{
+		((t_argument *)sl()->args_start->content)->chosen_one = true;
+		sl_print_elem((t_list *)sl()->args_start);
+	}
 }

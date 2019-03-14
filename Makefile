@@ -1,6 +1,6 @@
 #-------------------------- Key Values -----------------------------------------
 NAME		:=	ft_select
-CFLAGS		:=	-Wall -Werror -Wextra
+# CFLAGS		:=	-Wall -Werror -Wextra
 CC			:=	gcc
 
 DIR_LIB		:=	libft/

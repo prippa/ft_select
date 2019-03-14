@@ -12,6 +12,11 @@
 
 #include "ft_select.h"
 
+void		sl_goto(int32_t y, int32_t x)
+{
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), x, y), STDIN_FILENO);
+}
+
 int32_t		sl_print_key(int32_t n)
 {
 	return (write(STDIN_FILENO, &n, 1));

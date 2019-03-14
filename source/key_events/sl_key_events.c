@@ -21,24 +21,14 @@ static const int64_t	g_keys[KE_SIZE] =
 	SPACE, BACK_SPACE, DEL
 };
 
-typedef void			(*t_events)(void);
+typedef void			(*t_events)(t_list2 *chosen_one);
 static const			t_events g_ke[KE_SIZE] =
 {
 	sl_ke_esc, sl_ke_up, sl_ke_down, sl_ke_right, sl_ke_left, sl_ke_return,
 	sl_ke_space, sl_ke_back_space, sl_ke_del
 };
 
-void		sl_key_events(int64_t key)
-{
-	uint16_t i;
-
-	i = -1;
-	while (++i < KE_SIZE)
-		if (g_keys[i] == key)
-			g_ke[i]();
-}
-
-t_list2		*sl_ke_get_chosen_one(t_list2 *args_start)
+static t_list2			*sl_ke_get_chosen_one(t_list2 *args_start)
 {
 	while (args_start)
 	{
@@ -49,7 +39,12 @@ t_list2		*sl_ke_get_chosen_one(t_list2 *args_start)
 	return (NULL);
 }
 
-// void		sl_ke_go_to(int32_t y, int32_t x)
-// {
-// 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), x, y), STDIN_FILENO);
-// }
+void					sl_key_events(int64_t key)
+{
+	uint16_t i;
+
+	i = -1;
+	while (++i < KE_SIZE)
+		if (g_keys[i] == key)
+			g_ke[i](sl_ke_get_chosen_one(sl()->args_start));
+}
