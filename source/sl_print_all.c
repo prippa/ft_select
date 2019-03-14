@@ -77,6 +77,8 @@ void			sl_print_elem(t_list *elem)
 {
 	t_argument *arg;
 
+	if (!sl()->ok_size_of_window)
+		return ;
 	arg = (t_argument *)elem->content;
 	sl_goto(arg->p.y, arg->p.x);
 	ft_dprintf(STDIN_FILENO, "%s%s%~s\n",
@@ -89,13 +91,13 @@ void			sl_print_elem(t_list *elem)
 
 void			sl_print_all(void)
 {
+	tputs(tgetstr("cl", NULL), 1, sl_print_key);
 	if (sl_print_all_logic() == false)
 	{
 		ft_putstr_fd(NO_ROOM, STDIN_FILENO);
 		sl()->ok_size_of_window = false;
 		return ;
 	}
-	tputs(tgetstr("cl", NULL), 1, sl_print_key);
-	ft_lstiter((t_list *)sl()->args_start, sl_print_elem);
 	sl()->ok_size_of_window = true;
+	ft_lstiter((t_list *)sl()->args_start, sl_print_elem);
 }

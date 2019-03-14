@@ -51,6 +51,7 @@ t_select			*sl(void);
 void				sl_init(int argc, char **argv);
 void				sl_init_term(void);
 void				sl_init_args(char **argv);
+void				sl_init_signals(void);
 
 void				sl_exit(int32_t exit_code);
 void				sl_fatal_err_exit(const char *message);

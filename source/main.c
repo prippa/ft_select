@@ -22,8 +22,7 @@ static void	sl_loop(void)
 		key = 0;
 		if ((read(STDIN_FILENO, &key, 8)) == ERR)
 			sl_fatal_err_exit(READ_ERR);
-		if (sl()->ok_size_of_window)
-			sl_key_events(key);
+		sl_key_events(key);
 	}
 }
 

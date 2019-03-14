@@ -27,4 +27,5 @@ void		sl_init(int argc, char **argv)
 	ft_bzero(sl(), sizeof(t_select));
 	sl_init_term();
 	sl_init_args(argv + 1);
+	sl_init_signals();
 }
