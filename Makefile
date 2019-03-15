@@ -33,6 +33,7 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_PI)sl_print_intro.c\
 				$(DIR_PI)sl_print_frame.c\
 				$(DIR_PI)sl_print_name.c\
+				$(DIR_PI)sl_print_80s.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\

@@ -3,7 +3,7 @@
 static void	sl_go_and_print(uint16_t y, uint16_t x, char c)
 {
 	sl_goto(y, x);
-	ft_dprintf(STDIN_FILENO, "%~c", CT_BOLD, C_MAGENTA, c);
+	ft_dprintf(STDIN_FILENO, "%~c", CT_BOLD, C_CYAN, c);
 	usleep(FRAME_USLEEP);
 }
 

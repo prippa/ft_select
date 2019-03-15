@@ -1,44 +1,26 @@
 #include "print_intro.h"
 #include <time.h>
 
-// const char	g_intro[INTRO_ROW_SIZE][INTRO_COL_SIZE] =
-// {
-// 	"      :::::::::: :::::::::::           ::::::::  :\
-// ::::::::: :::        :::::::::: :::::::: ::::::::::: ",
-// 	"     :+:            :+:              :+:    :+: :+\
-// :        :+:        :+:       :+:    :+:    :+:      ",
-// 	"    +:+            +:+              +:+        +:+\
-//         +:+        +:+       +:+           +:+       ",
-// 	"   :#::+::#       +#+              +#++:++#++ +#++\
-// :++#   +#+        +#++:++#  +#+           +#+        ",
-// 	"  +#+            +#+                     +#+ +#+  \
-//       +#+        +#+       +#+           +#+         ",
-// 	" #+#            #+#              #+#    #+# #+#   \
-//      #+#        #+#       #+#    #+#    #+#          ",
-// 	"###            ###    ########## ########  #######\
-// ### ########## ########## ########     ###           ",
-// };
-
 const char	g_intro[INTRO_ROW_SIZE][INTRO_COL_SIZE] =
 {
-	"  :::::::::: :::::::::::           ::::::::  ::::::::\
-:: :::        :::::::::: :::::::: ::::::::::: ",
-	"  :+:            :+:              :+:    :+: :+:     \
-   :+:        :+:       :+:    :+:    :+:     ",
-	"  +:+            +:+              +:+        +:+     \
-   +:+        +:+       +:+           +:+     ",
-	"  :#::+::#       +#+              +#++:++#++ +#++:++#\
-   +#+        +#++:++#  +#+           +#+     ",
-	"  +#+            +#+                     +#+ +#+     \
-   +#+        +#+       +#+           +#+     ",
-	"  #+#            #+#              #+#    #+# #+#     \
-   #+#        #+#       #+#    #+#    #+#     ",
-	"  ###            ###    ########## ########  ########\
-## ########## ########## ########     ###     "
+	"        :::::::::: :::::::::::           ::::::::  :\
+::::::::: :::        :::::::::: :::::::: ::::::::::: ",
+	"       :+:            :+:              :+:    :+: :+\
+:        :+:        :+:       :+:    :+:    :+:      ",
+	"      +:+            +:+              +:+        +:+\
+        +:+        +:+       +:+           +:+       ",
+	"     :#::+::#       +#+              +#++:++#++ +#++\
+:++#   +#+        +#++:++#  +#+           +#+        ",
+	"    +#+            +#+                     +#+ +#+  \
+      +#+        +#+       +#+           +#+         ",
+	"   #+#            #+#              #+#    #+# #+#   \
+     #+#        #+#       #+#    #+#    #+#          ",
+	"  ###            ###    ########## ########  #######\
+### ########## ########## ########     ###           ",
 };
 
 
-static void	sl_go_and_print(uint16_t y, uint16_t x, char c, t_color_type ct, uint16_t u)
+static void	sl_go_and_print(uint16_t y, uint16_t x, char c, t_color_type ct)
 {
 	t_color color;
 
@@ -50,7 +32,6 @@ static void	sl_go_and_print(uint16_t y, uint16_t x, char c, t_color_type ct, uin
 	else
 		color = C_RED;
 	ft_dprintf(STDIN_FILENO, "%s%~c", ITALIC, ct, color, c);
-	usleep(u);
 }
 
 static void sl_print_intro_from_up_to_down(t_point p)
@@ -63,32 +44,10 @@ static void sl_print_intro_from_up_to_down(t_point p)
 	{
 		j = -1;
 		while (++j < INTRO_COL_SIZE)
-			sl_go_and_print(p.y + i, p.x + j, g_intro[i][j],
-				F_NONE, NAME_UP_TO_DOWN_USLEEP);
+			sl_go_and_print(p.y + i, p.x + j, g_intro[i][j], F_NONE);
+		usleep(NAME_UP_TO_DOWN_USLEEP);
 	}
 }
-
-// static void sl_print_intro_from_down_to_up(t_point p)
-// {
-// 	t_bool	name[INTRO_ROW_SIZE][INTRO_COL_SIZE];
-// 	t_point	t;
-// 	size_t	no_room_flag;
-
-// 	ft_bzero(&name, sizeof(name));
-// 	no_room_flag = INTRO_ROW_SIZE * INTRO_COL_SIZE;
-// 	while (no_room_flag)
-// 	{
-// 		t.y = (uint16_t)rand() % INTRO_ROW_SIZE;
-// 		t.x = (uint16_t)rand() % INTRO_COL_SIZE;
-// 		if (!name[t.y][t.x])
-// 		{
-// 			name[t.y][t.x] = true;
-// 			--no_room_flag;
-// 			sl_go_and_print(p.y + t.y, p.x + t.x, g_intro[t.y][t.x], CT_BOLD);
-// 			usleep(NAME_DOWN_TO_UP_USLEEP);
-// 		}
-// 	}
-// }
 
 static t_bool	sl_check_bools(t_bool b[INTRO_COL_SIZE])
 {
@@ -123,16 +82,16 @@ static void sl_print_intro_from_down_to_up(t_point p)
 			{
 				name[i][t.x] = true;
 				--no_room_flag;
-				sl_go_and_print(p.y + i, p.x + t.x, g_intro[i][t.x],
-					CT_BOLD, NAME_DOWN_TO_UP_USLEEP);
+				sl_go_and_print(p.y + i, p.x + t.x, g_intro[i][t.x], CT_BOLD);
+				usleep(NAME_DOWN_TO_UP_USLEEP);
 			}
 		}
 		else if (i - 1 >= 0 && !name[i - 1][t.x])
 		{
 			name[i - 1][t.x] = true;
 			--no_room_flag;
-			sl_go_and_print(p.y + i - 1, p.x + t.x, g_intro[i - 1][t.x],
-				CT_BOLD, NAME_DOWN_TO_UP_USLEEP);
+			sl_go_and_print(p.y + i - 1, p.x + t.x, g_intro[i - 1][t.x], CT_BOLD);
+			usleep(NAME_DOWN_TO_UP_USLEEP);
 		}
 	}
 }
