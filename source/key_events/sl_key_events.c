@@ -50,3 +50,12 @@ void					sl_key_events(int64_t key)
 		if (g_keys[i] == key)
 			g_ke[i](sl_ke_get_chosen_one(sl()->args_start));
 }
+
+void					sl_del_arg(void *content, size_t content_size)
+{
+	t_argument *arg;
+
+	arg = (t_argument *)content;
+	(void)content_size;
+	ft_memdel((void **)&arg->name);
+}

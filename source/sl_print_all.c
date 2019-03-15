@@ -14,7 +14,6 @@
 #include "messages.h"
 #include "keys.h"
 #include <math.h>
-#include <sys/ioctl.h>
 
 #define SEPARATOR_SIZE 1
 
@@ -54,18 +53,16 @@ static void		sl_set_coords(size_t width, t_list2 *start)
 
 static t_bool	sl_print_all_logic(void)
 {
-	struct winsize	w;
 	size_t			width;
 	size_t			col_size;
 	size_t			row_size;
 
-	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
 	width = sl_get_max_len(sl()->args_start) + SEPARATOR_SIZE;
-	if ((col_size = w.ws_col / width) == 0)
+	if ((col_size = sl_ws_col() / width) == 0)
 		return (false);
 	row_size = (size_t)ceil(
 		(double)ft_lstsize((t_list *)sl()->args_start) / col_size);
-	if (row_size >= w.ws_row)
+	if (row_size >= sl_ws_row())
 		return (false);
 	sl()->col_size = (uint16_t)col_size;
 	sl()->row_size = (uint16_t)row_size;

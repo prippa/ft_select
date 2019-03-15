@@ -55,18 +55,20 @@ void				sl_init_args(char **argv);
 void				sl_init_signals(void);
 void				sl_sig_hendler(int32_t sig);
 
+void				sl_del_arg(void *content, size_t content_size);
+
 void				sl_exit(int32_t exit_code);
 void				sl_fatal_err_exit(const char *message);
 void				sl_init_fatal_err_exit(const char *message);
 
 void				sl_key_events(int64_t key);
 
+uint16_t			sl_ws_col(void);
+uint16_t			sl_ws_row(void);
 void				sl_goto(int32_t y, int32_t x);
 int32_t				sl_print_key(int32_t n);
-void				sl_del_arg(void *content, size_t content_size);
 void				sl_set_base_settings(void);
 
-void				sl_print_window_rwh(int32_t sig);
 void				sl_print_intro(void);
 void				sl_print_all(void);
 void				sl_print_elem(t_list *elem);

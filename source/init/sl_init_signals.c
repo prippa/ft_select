@@ -40,7 +40,7 @@ void		sl_sig_hendler(int32_t sig)
 void		sl_init_signals(void)
 {
 	if (sl()->print_intro)
-		signal(SIGWINCH, sl_print_window_rwh);
+		signal(SIGWINCH, SIG_DFL);
 	else
 		signal(SIGWINCH, sl_sig_hendler);
 	signal(SIGINT, sl_sig_hendler);

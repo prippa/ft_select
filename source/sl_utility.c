@@ -11,6 +11,23 @@
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include <sys/ioctl.h>
+
+uint16_t	sl_ws_col(void)
+{
+	struct winsize	w;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+	return (w.ws_col);
+}
+
+uint16_t	sl_ws_row(void)
+{
+	struct winsize	w;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+	return (w.ws_row);
+}
 
 void		sl_goto(int32_t y, int32_t x)
 {
@@ -20,15 +37,6 @@ void		sl_goto(int32_t y, int32_t x)
 int32_t		sl_print_key(int32_t n)
 {
 	return (write(STDIN_FILENO, &n, 1));
-}
-
-void		sl_del_arg(void *content, size_t content_size)
-{
-	t_argument *arg;
-
-	arg = (t_argument *)content;
-	(void)content_size;
-	ft_memdel((void **)&arg->name);
 }
 
 void		sl_set_base_settings(void)
