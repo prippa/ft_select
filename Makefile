@@ -13,6 +13,7 @@ CH_OBJ		:=	o
 
 DIR_INIT	:=	$(DIR_SRC)init/
 DIR_KE		:=	$(DIR_SRC)key_events/
+DIR_PI		:=	$(DIR_SRC)print_intro/
 
 LIBFT		:=	$(DIR_LIB)libft.a
 DIR_INC_LIB	:=	$(DIR_LIB)includes/libc $(DIR_LIB)includes/printf\
@@ -21,14 +22,17 @@ DIR_INC_LIB	:=	$(DIR_LIB)includes/libc $(DIR_LIB)includes/printf\
 #-------------------------- Header files ---------------------------------------
 COR_H		:=	$(DIR_INC)ft_select.h\
 				$(DIR_INC)messages.h\
-				$(DIR_INC)keys.h
+				$(DIR_INC)keys.h\
+				$(DIR_INC)print_intro.h
 
 #-------------------------- Source files ---------------------------------------
 COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_SRC)sl_exit.c\
 				$(DIR_SRC)sl_utility.c\
 				$(DIR_SRC)sl_print_all.c\
-				$(DIR_SRC)sl_print_intro.c\
+				$(DIR_PI)sl_print_intro.c\
+				$(DIR_PI)sl_print_frame.c\
+				$(DIR_PI)sl_print_name.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\

@@ -53,7 +53,7 @@ enum			{ false, true };
 
 # define F_NONE -1
 
-enum
+typedef enum	e_color_type
 {
 	CT_BOLD,
 	CT_DIM,
@@ -61,9 +61,9 @@ enum
 	CT_UNDER,
 	CT_BACK,
 	CT_SIZE
-};
+}				t_color_type;
 
-enum
+typedef enum	e_color
 {
 	C_RED,
 	C_YELLOW,
@@ -74,6 +74,6 @@ enum
 	C_GREY,
 	C_WHITE,
 	C_SIZE
-};
+}				t_color;
 
 #endif
