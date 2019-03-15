@@ -44,6 +44,7 @@ typedef struct		s_select
 	uint16_t		col_size;
 	uint16_t		row_size;
 	t_bool			ok_size_of_window;
+	t_bool			print_intro;
 }					t_select;
 
 t_select			*sl(void);
@@ -52,6 +53,7 @@ void				sl_init(int argc, char **argv);
 void				sl_init_term(void);
 void				sl_init_args(char **argv);
 void				sl_init_signals(void);
+void				sl_sig_hendler(int32_t sig);
 
 void				sl_exit(int32_t exit_code);
 void				sl_fatal_err_exit(const char *message);
@@ -64,6 +66,8 @@ int32_t				sl_print_key(int32_t n);
 void				sl_del_arg(void *content, size_t content_size);
 void				sl_set_base_settings(void);
 
+void				sl_print_window_rwh(int32_t sig);
+void				sl_print_intro(void);
 void				sl_print_all(void);
 void				sl_print_elem(t_list *elem);
 

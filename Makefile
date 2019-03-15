@@ -28,6 +28,7 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_SRC)sl_exit.c\
 				$(DIR_SRC)sl_utility.c\
 				$(DIR_SRC)sl_print_all.c\
+				$(DIR_SRC)sl_print_intro.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\
@@ -41,7 +42,9 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_KE)sl_ke_return.c\
 				$(DIR_KE)sl_ke_space.c\
 				$(DIR_KE)sl_ke_back_space.c\
-				$(DIR_KE)sl_ke_del.c
+				$(DIR_KE)sl_ke_del.c\
+				$(DIR_KE)sl_ke_select_all.c\
+				$(DIR_KE)sl_ke_unselect_all.c
 
 
 #-------------------------- Init OBJ INC ---------------------------------------
@@ -61,7 +64,7 @@ $(DIR_OBJ):
 
 #-------------------------- Link Block -----------------------------------------
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) -ltermcap
+	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) -ltermcap -lm
 	@echo "Linking" [ $(NAME) ]
 
 #-------------------------- Compil Block ---------------------------------------

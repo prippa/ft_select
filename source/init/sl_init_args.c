@@ -13,6 +13,20 @@
 #include "ft_select.h"
 #include <sys/stat.h>
 
+#define PRINT_INTRO_F "--intro"
+
+static void sl_check_flags(char ***argv)
+{
+	while (**argv)
+	{
+		if (ft_strequ(**argv, PRINT_INTRO_F))
+			sl()->print_intro = true;
+		else
+			break ;
+		++(*argv);
+	}
+}
+
 static void sl_set_default_color(t_argument *arg)
 {
 	arg->color_type = F_NONE;
@@ -52,6 +66,7 @@ void			sl_init_args(char **argv)
 	t_argument	arg;
 	t_list2		*new_obj;
 
+	sl_check_flags(&argv);
 	while (*argv)
 	{
 		ft_bzero(&arg, sizeof(t_argument));

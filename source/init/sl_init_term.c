@@ -21,7 +21,6 @@ static void	sl_set_new_attr(void)
 	if ((tcgetattr(STDIN_FILENO, &sl()->new_attr)) == ERR)
 		sl_init_fatal_err_exit("tcgetattr() failed");
 	sl()->new_attr.c_lflag &= ~(ICANON | ECHO);
-	// sl()->new_attr.c_oflag &= ~(OPOST);
 	sl()->new_attr.c_cc[VMIN] = 1;
 	sl()->new_attr.c_cc[VTIME] = 0;
 	if ((tcsetattr(STDIN_FILENO, TCSANOW, &sl()->new_attr)) == ERR)

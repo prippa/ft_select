@@ -65,7 +65,7 @@ static t_bool	sl_print_all_logic(void)
 		return (false);
 	row_size = (size_t)ceil(
 		(double)ft_lstsize((t_list *)sl()->args_start) / col_size);
-	if (row_size > w.ws_row)
+	if (row_size >= w.ws_row)
 		return (false);
 	sl()->col_size = (uint16_t)col_size;
 	sl()->row_size = (uint16_t)row_size;
