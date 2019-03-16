@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include "messages.h"
 
 t_select	*sl(void)
 {
@@ -22,10 +21,9 @@ t_select	*sl(void)
 
 void		sl_init(int argc, char **argv)
 {
-	if (argc == 1)
-		sl_init_fatal_err_exit(SL_USAGE);
+	(void)argc;
 	ft_bzero(sl(), sizeof(t_select));
-	sl_init_term();
 	sl_init_args(argv);
+	sl_init_term();
 	sl_init_signals();
 }

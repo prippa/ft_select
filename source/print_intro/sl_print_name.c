@@ -1,5 +1,4 @@
 #include "print_intro.h"
-#include <time.h>
 
 const char	g_intro[INTRO_ROW_SIZE][INTRO_COL_SIZE] =
 {

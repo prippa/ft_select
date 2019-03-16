@@ -78,9 +78,10 @@ void			sl_print_elem(t_list *elem)
 		return ;
 	arg = (t_argument *)elem->content;
 	sl_goto(arg->p.y, arg->p.x);
-	ft_dprintf(STDIN_FILENO, "%s%s%~s\n",
+	ft_dprintf(STDIN_FILENO, "%s%s%s%~s\n",
 		(arg->selected ? BACK : EMPTY_STR),
 		(arg->chosen_one ? UNDER_LINE : EMPTY_STR),
+		(arg->chosen_one ? ITALIC : EMPTY_STR),
 		arg->color_type,
 		arg->color,
 		arg->name);

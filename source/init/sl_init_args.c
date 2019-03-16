@@ -12,6 +12,7 @@
 
 #include "ft_select.h"
 #include <sys/stat.h>
+#include "messages.h"
 
 #define PRINT_INTRO_F "--intro"
 
@@ -67,6 +68,8 @@ void			sl_init_args(char **argv)
 	t_list2		*new_obj;
 
 	sl_check_flags(&argv);
+	if (!*argv)
+		sl_init_fatal_err_exit(SL_USAGE);
 	while (*argv)
 	{
 		ft_bzero(&arg, sizeof(t_argument));

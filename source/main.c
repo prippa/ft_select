@@ -23,7 +23,6 @@ static void	sl_loop(void)
 		if ((read(STDIN_FILENO, &key, 8)) == ERR)
 			sl_fatal_err_exit(READ_ERR);
 		sl_key_events(key);
-		// ft_dprintf(STDIN_FILENO, "[%lld]\n", key);
 	}
 }
 

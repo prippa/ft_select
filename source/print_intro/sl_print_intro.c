@@ -1,6 +1,7 @@
 #include "print_intro.h"
 #include <signal.h>
 #include <math.h>
+#include <time.h>
 
 static t_bool	sl_is_valid_window(void)
 {
@@ -25,6 +26,27 @@ static uint16_t	sl_get_80s_y(void)
 			INTRO_80S_ROW_SIZE + INTRO_ROW_SIZE + (FRAME_SIZE * 2))) / 2));
 }
 
+static void		sl_print_background(void)
+{
+	t_point	w;
+	t_point	i;
+	int32_t	rand_number;
+
+	w.x = sl_ws_col();
+	w.y = sl_ws_row();
+	i.y = -1;
+	while (++i.y < w.y)
+	{
+		i.x = -1;
+		while (++i.x < w.x)
+			if ((rand_number = rand() % 30) == 0)
+			{
+				sl_goto(i.y, i.x);
+				ft_dprintf(STDIN_FILENO, "%~c", F_NONE, C_WHITE, '*');
+			}
+	}
+}
+
 void			sl_print_intro(void)
 {
 	t_point		p;
@@ -33,7 +55,8 @@ void			sl_print_intro(void)
 	tputs(tgetstr("cl", NULL), 1, sl_print_key);
 	if (sl_is_valid_window())
 	{
-		sl_music_on();
+		srand(time(NULL));
+		sl_print_background();
 		p.x = (uint16_t)ceil((double)(sl_ws_col() - INTRO_80S_COL_SIZE) / 2);
 		p.y = sl_get_80s_y();
 		sl_print_80s(p);
@@ -48,7 +71,6 @@ void			sl_print_intro(void)
 		p.y += INTRO_ROW_SIZE + FRAME_SIZE  + 1;
 		sl_print_info(p);
 		read(STDIN_FILENO, &tmp, 8);
-		sl_music_off();
 	}
 	signal(SIGWINCH, sl_sig_hendler);
 }
