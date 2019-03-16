@@ -5,7 +5,7 @@
   unselect all
 ✕ sort names
   sort types
-✕ cool intro
+✓ cool ascii art intro
 
 --------------------
 CFLAGS

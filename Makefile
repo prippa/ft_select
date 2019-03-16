@@ -30,10 +30,12 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_SRC)sl_exit.c\
 				$(DIR_SRC)sl_utility.c\
 				$(DIR_SRC)sl_print_all.c\
+				$(DIR_SRC)sl_music.c\
 				$(DIR_PI)sl_print_intro.c\
 				$(DIR_PI)sl_print_frame.c\
 				$(DIR_PI)sl_print_name.c\
 				$(DIR_PI)sl_print_80s.c\
+				$(DIR_PI)sl_print_info.c\
 				$(DIR_INIT)sl_init.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\

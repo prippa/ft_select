@@ -73,4 +73,7 @@ void				sl_print_intro(void);
 void				sl_print_all(void);
 void				sl_print_elem(t_list *elem);
 
+void				sl_music_on(void);
+void				sl_music_off(void);
+
 #endif

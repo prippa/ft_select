@@ -28,10 +28,12 @@ static uint16_t	sl_get_80s_y(void)
 void			sl_print_intro(void)
 {
 	t_point		p;
+	int64_t		tmp;
 
 	tputs(tgetstr("cl", NULL), 1, sl_print_key);
 	if (sl_is_valid_window())
 	{
+		sl_music_on();
 		p.x = (uint16_t)ceil((double)(sl_ws_col() - INTRO_80S_COL_SIZE) / 2);
 		p.y = sl_get_80s_y();
 		sl_print_80s(p);
@@ -42,7 +44,11 @@ void			sl_print_intro(void)
 		p.x += FRAME_SIZE;
 		p.y += FRAME_SIZE;
 		sl_print_name(p);
-		read(STDIN_FILENO, NULL, 1);
+		p.x = (uint16_t)ceil((double)(sl_ws_col() - INFO_COL_SIZE) / 2);
+		p.y += INTRO_ROW_SIZE + FRAME_SIZE  + 1;
+		sl_print_info(p);
+		read(STDIN_FILENO, &tmp, 8);
+		sl_music_off();
 	}
 	signal(SIGWINCH, sl_sig_hendler);
 }
