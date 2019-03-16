@@ -1,25 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sl_print_name.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/16 10:29:39 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/16 10:29:40 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "print_intro.h"
+
+#define ARG_0_1 "        :::::::::: :::::::::::           ::::::::  :"
+#define ARG_0_2 "::::::::: :::        :::::::::: :::::::: ::::::::::: "
+#define ARG_1_1 "       :+:            :+:              :+:    :+: :+"
+#define ARG_1_2 ":        :+:        :+:       :+:    :+:    :+:      "
+#define ARG_2_1 "      +:+            +:+              +:+        +:+"
+#define ARG_2_2 "        +:+        +:+       +:+           +:+       "
+#define ARG_3_1 "     :#::+::#       +#+              +#++:++#++ +#++"
+#define ARG_3_2 ":++#   +#+        +#++:++#  +#+           +#+        "
+#define ARG_4_1 "    +#+            +#+                     +#+ +#+  "
+#define ARG_4_2 "      +#+        +#+       +#+           +#+         "
+#define ARG_5_1 "   #+#            #+#              #+#    #+# #+#   "
+#define ARG_5_2 "     #+#        #+#       #+#    #+#    #+#          "
+#define ARG_6_1 "  ###            ###    ########## ########  #######"
+#define ARG_6_2 "### ########## ########## ########     ###           "
+
+#define ARG_0 ARG_0_1 ARG_0_2
+#define ARG_1 ARG_1_1 ARG_1_2
+#define ARG_2 ARG_2_1 ARG_2_2
+#define ARG_3 ARG_3_1 ARG_3_2
+#define ARG_4 ARG_3_1 ARG_3_2
+#define ARG_5 ARG_5_1 ARG_5_2
+#define ARG_6 ARG_6_1 ARG_6_2
 
 const char	g_intro[INTRO_ROW_SIZE][INTRO_COL_SIZE] =
 {
-	"        :::::::::: :::::::::::           ::::::::  :\
-::::::::: :::        :::::::::: :::::::: ::::::::::: ",
-	"       :+:            :+:              :+:    :+: :+\
-:        :+:        :+:       :+:    :+:    :+:      ",
-	"      +:+            +:+              +:+        +:+\
-        +:+        +:+       +:+           +:+       ",
-	"     :#::+::#       +#+              +#++:++#++ +#++\
-:++#   +#+        +#++:++#  +#+           +#+        ",
-	"    +#+            +#+                     +#+ +#+  \
-      +#+        +#+       +#+           +#+         ",
-	"   #+#            #+#              #+#    #+# #+#   \
-     #+#        #+#       #+#    #+#    #+#          ",
-	"  ###            ###    ########## ########  #######\
-### ########## ########## ########     ###           ",
+	ARG_0,
+	ARG_1,
+	ARG_2,
+	ARG_3,
+	ARG_4,
+	ARG_5,
+	ARG_6
 };
 
-
-static void	sl_go_and_print(uint16_t y, uint16_t x, char c, t_color_type ct)
+static void		sl_go_and_print(uint16_t y, uint16_t x, char c, t_color_type ct)
 {
 	t_color color;
 
@@ -44,7 +71,7 @@ static t_bool	sl_check_bools(t_bool b[INTRO_COL_SIZE])
 	return (true);
 }
 
-static void sl_print_intro_from_down_to_up(t_point p)
+static void		sl_print_intro_from_down_to_up(t_point p)
 {
 	t_bool		name[INTRO_ROW_SIZE][INTRO_COL_SIZE];
 	t_point		t;
@@ -73,7 +100,7 @@ static void sl_print_intro_from_down_to_up(t_point p)
 	}
 }
 
-static void sl_print_intro_from_up_to_down(t_point p)
+static void		sl_print_intro_from_up_to_down(t_point p)
 {
 	uint16_t i;
 	uint16_t j;
@@ -88,7 +115,7 @@ static void sl_print_intro_from_up_to_down(t_point p)
 	}
 }
 
-void		sl_print_name(t_point p)
+void			sl_print_name(t_point p)
 {
 	srand(time(NULL));
 	sl_print_intro_from_up_to_down(p);

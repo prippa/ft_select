@@ -27,7 +27,7 @@ static t_list2	*get_prev_n_obj(t_list2 *cur)
 	return (NULL);
 }
 
-void		sl_ke_left(t_list2 *co)
+void			sl_ke_left(t_list2 *co)
 {
 	t_list2 *new_one;
 

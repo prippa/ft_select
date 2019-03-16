@@ -44,4 +44,6 @@ void		sl_set_base_settings(void)
 	tcsetattr(STDIN_FILENO, TCSANOW, &sl()->base_attr);
 	tputs(tgetstr("ve", NULL), 1, sl_print_key);
 	tputs(tgetstr("te", NULL), 1, sl_print_key);
+	if (sl()->music)
+		sl_music_off();
 }

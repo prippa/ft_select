@@ -13,7 +13,7 @@
 #ifndef KEYS_H
 # define KEYS_H
 
-#include "ft_lst.h"
+# include "ft_lst.h"
 
 # define ESC		27
 # define UP			4283163

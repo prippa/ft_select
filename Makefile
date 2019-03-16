@@ -1,6 +1,6 @@
 #-------------------------- Key Values -----------------------------------------
 NAME		:=	ft_select
-# CFLAGS		:=	-Wall -Werror -Wextra
+CFLAGS		:=	-Wall -Werror -Wextra
 CC			:=	gcc
 
 DIR_LIB		:=	libft/
@@ -40,6 +40,7 @@ COR_C		:=	$(DIR_SRC)main.c\
 				$(DIR_INIT)sl_init_args.c\
 				$(DIR_INIT)sl_init_term.c\
 				$(DIR_INIT)sl_init_signals.c\
+				$(DIR_INIT)sl_init_song.c\
 				$(DIR_KE)sl_key_events.c\
 				$(DIR_KE)sl_ke_esc.c\
 				$(DIR_KE)sl_ke_up.c\

@@ -1,0 +1,7 @@
+✓ resize
+✓ colors
+✓ no bliks
+✓ select all
+  unselect all
+✓ cool ascii art intro
+✓ 80 music

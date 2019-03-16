@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sl_print_info.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/16 10:21:23 by prippa            #+#    #+#             */
+/*   Updated: 2019/03/16 10:21:24 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "print_intro.h"
 #include <math.h>
 
-const char		*g_info_list[INFO_ROWS_SIZE] = 
+const char	*g_info_list[INFO_ROWS_SIZE] =
 {
 	"Program Usage:",
 	"Arrows: (↑ ↓ ← →) To list items",
@@ -21,7 +33,7 @@ static void	sl_go_and_print(uint16_t y, uint16_t x, const char *s, t_color c)
 	usleep(INFO_SLEEP);
 }
 
-void			sl_print_info(t_point p)
+void		sl_print_info(t_point p)
 {
 	uint16_t	i;
 

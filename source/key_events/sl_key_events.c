@@ -58,4 +58,5 @@ void					sl_del_arg(void *content, size_t content_size)
 	arg = (t_argument *)content;
 	(void)content_size;
 	ft_memdel((void **)&arg->name);
+	free(content);
 }

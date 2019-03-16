@@ -15,20 +15,23 @@
 #include "messages.h"
 
 #define PRINT_INTRO_F "--intro"
+#define AITYS_MUSIC_F "--music"
 
-static void sl_check_flags(char ***argv)
+static void	sl_check_flags(char ***argv)
 {
 	while (**argv)
 	{
 		if (ft_strequ(**argv, PRINT_INTRO_F))
 			sl()->print_intro = true;
+		else if (ft_strequ(**argv, AITYS_MUSIC_F))
+			sl_init_song(argv);
 		else
 			break ;
 		++(*argv);
 	}
 }
 
-static void sl_set_default_color(t_argument *arg)
+static void	sl_set_default_color(t_argument *arg)
 {
 	arg->color_type = F_NONE;
 	arg->color = F_NONE;
@@ -62,7 +65,7 @@ static void	sl_set_color(const char *file, t_argument *arg)
 		sl_set_default_color(arg);
 }
 
-void			sl_init_args(char **argv)
+void		sl_init_args(char **argv)
 {
 	t_argument	arg;
 	t_list2		*new_obj;

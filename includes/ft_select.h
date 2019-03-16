@@ -45,6 +45,8 @@ typedef struct		s_select
 	uint16_t		row_size;
 	t_bool			ok_size_of_window;
 	t_bool			print_intro;
+	t_bool			music;
+	const char		*music_cmd;
 }					t_select;
 
 t_select			*sl(void);
@@ -52,6 +54,7 @@ t_select			*sl(void);
 void				sl_init(int argc, char **argv);
 void				sl_init_term(void);
 void				sl_init_args(char **argv);
+void				sl_init_song(char ***argv);
 void				sl_init_signals(void);
 void				sl_sig_hendler(int32_t sig);
 
