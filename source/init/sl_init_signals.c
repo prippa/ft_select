@@ -31,6 +31,8 @@ void		sl_sig_hendler(int32_t sig)
 	{
 		sl_init_term();
 		sl_init_signals();
+		if (sl()->music)
+			sl_music_on();
 		sl_print_all();
 	}
 	else

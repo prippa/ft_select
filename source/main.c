@@ -30,10 +30,6 @@ int			main(int argc, char **argv)
 {
 	++argv;
 	sl_init(argc, argv);
-	if (sl()->music)
-		sl_music_on();
-	if (sl()->print_intro)
-		sl_print_intro();
 	sl_loop();
 	sl_exit(EXIT_SUCCESS);
 }

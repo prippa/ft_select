@@ -26,4 +26,8 @@ void		sl_init(int argc, char **argv)
 	sl_init_args(argv);
 	sl_init_term();
 	sl_init_signals();
+	if (sl()->music)
+		sl_music_on();
+	if (sl()->print_intro)
+		sl_print_intro();
 }
