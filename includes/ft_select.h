@@ -53,8 +53,8 @@ t_select			*sl(void);
 
 void				sl_init(int argc, char **argv);
 void				sl_init_term(void);
-t_bool				sl_init_args(char **argv);
-void				sl_init_song(char ***argv);
+void				sl_init_args(char **argv);
+t_bool				sl_init_song(char ***argv);
 void				sl_init_signals(void);
 void				sl_sig_hendler(int32_t sig);
 
