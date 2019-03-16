@@ -24,7 +24,10 @@ static void	sl_check_flags(char ***argv)
 		if (ft_strequ(**argv, PRINT_INTRO_F))
 			sl()->print_intro = true;
 		else if (ft_strequ(**argv, AITYS_MUSIC_F))
-			sl_init_song(argv);
+		{
+			if (!(sl_init_song(argv)))
+				break ;
+		}
 		else
 			break ;
 		++(*argv);

@@ -27,16 +27,17 @@ const char	*g_song_list[SONG_SIZE] =
 	SONG_3
 };
 
-void		sl_init_song(char ***argv)
+t_bool		sl_init_song(char ***argv)
 {
 	uint32_t i;
 
 	++(*argv);
 	if (!**argv || !ft_is_str_digit(**argv))
-		return ;
+		return (false);
 	i = ft_atoi(**argv);
 	if (i < 1 || i > SONG_SIZE)
-		return ;
+		return (false);
 	sl()->music = true;
 	sl()->music_cmd = g_song_list[i - 1];
+	return (true);
 }
