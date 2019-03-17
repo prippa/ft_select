@@ -31,7 +31,7 @@
 #define ARG_1 ARG_1_1 ARG_1_2
 #define ARG_2 ARG_2_1 ARG_2_2
 #define ARG_3 ARG_3_1 ARG_3_2
-#define ARG_4 ARG_3_1 ARG_3_2
+#define ARG_4 ARG_4_1 ARG_4_2
 #define ARG_5 ARG_5_1 ARG_5_2
 #define ARG_6 ARG_6_1 ARG_6_2
 
