@@ -17,6 +17,7 @@
 # include "ft_printf.h"
 # include <termios.h>
 # include <term.h>
+# include <time.h>
 
 typedef struct		s_point
 {
